@@ -1,10 +1,1 @@
-Checker = {}
-function Checker:getInfo()
-  return debug.getinfo
-end
-function Checker:isCFunction(func)
-  return self:getInfo()(func).what == "C";
-end
-function Checker:isLuaFunction(func)
-  return self:getInfo()(func).what == "C";
-end
+local function a()for b=2,12 do local c=debug.getinfo(b,"n")if not c then break end;if c.name=="require"then return true end end;return false end;if not a()then print("cannot load this file as it wasnt called by require()")return end;Checker={}function Checker:getInfo()return debug.getinfo end;function Checker:isCFunction(d)return self:getInfo()(d).what=="C"end;function Checker:isLuaFunction(d)return self:getInfo()(d).what=="Lua"end
